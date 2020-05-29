@@ -13,6 +13,7 @@ def al(theta:float)-> float:
 # @ param T: the time that we want to simulate the process (6 month)
 def simulation_infected(la, p, al, N, T):
     X = []
+    X.
 
 
     

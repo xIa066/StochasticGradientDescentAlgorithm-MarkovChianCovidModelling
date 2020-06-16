@@ -20,6 +20,7 @@ def simProcess(l, p, a, N, T, x0, H):
         else:
             i -= 1
 
+        # 
         t_n += t_i
         
         t.append(t_n)

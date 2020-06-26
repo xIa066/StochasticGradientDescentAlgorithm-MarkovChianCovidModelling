@@ -11,7 +11,6 @@ import math
 # @ param H: is the hospital capacity
 def simulation_infected(la, p, al, N, t_0, x_0, T_total, H, maxTime):
     # initialize time and infected patient
-    t_0 = 0
     # bind variables to initial conditions
     x_n = x_0
     # make sure the start is not 0

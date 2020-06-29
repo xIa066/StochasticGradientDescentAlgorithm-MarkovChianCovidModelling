@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 import numpy as np
 import math
 # simulate the infected patients number for a specific period T_total
@@ -109,6 +110,8 @@ N = 4e6
 maxTime = 3e4                                            
 stepsize = [0.00001, 2e-10]
 
+# placeholder T_H/T
+pr = 1
 
 trajectory_lambda = []
 trajectory_alpha = []
@@ -119,18 +122,26 @@ iteration = 0
 x_n = x_0
 t_n = 0
 
-while iteration < 50000:
+# counter for sequential updating of parameters
+update = 0
+
+# iterate until changes in parameters stabilises, then iterates until T_H/T is close to beta
+while iteration < 12000 or abs(pr - Beta)/Beta > 0.01:
     
     # simulate K days of X_n obtain T_H/T, starting from t_0 = 0 and x_0 = x_n
     X_n,T_n,T_H,T = simulation_infected(_lambda,_p,_alpha,N,t_n,x_n,K,H,maxTime)
     
-    # use K days simulation to update lambda and alpha
-    _alpha = max(0,update_alpha(_alpha,T_H,T,Beta,stepsize[1]))
-    _lambda = max(0, update_lambda(_lambda,T_H,T,Beta,stepsize[0]))
+    # use K days simulation to update lambda and alpha and update trajectory
+    if update == 1:
+        _alpha = max(0,update_alpha(_alpha,T_H,T,Beta,stepsize[1]))
+        trajectory_alpha.append(_alpha)
+        update = 0
+    else:
+        _lambda = max(0, update_lambda(_lambda,T_H,T,Beta,stepsize[0]))
+        trajectory_lambda.append(_lambda)
+        update = 1
     
-    # update the objective simulation trajectory
-    trajectory_alpha.append(_alpha)
-    trajectory_lambda.append(_lambda)
+    # update markov chain process
     trajectory_X_n.extend(X_n)
     trajectory_T_n.extend(T_n)
     

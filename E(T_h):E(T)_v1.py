@@ -1,5 +1,6 @@
 import numpy as np
 import math
+import matplotlib.pyplot as plt
 # simulate the infected patients number for a specific period T_total
 # this function simulate not strictly numbers of X_n in T_total time, given fixed Lambda, P, Alpha
 # Random Horizon: means that the whole trajectory stop once X_n hits 0
@@ -119,7 +120,7 @@ iteration = 0
 x_n = x_0
 t_n = 0
 
-while iteration < 50000:
+while iteration < 40000:
     
     # simulate K days of X_n obtain T_H/T, starting from t_0 = 0 and x_0 = x_n
     X_n,T_n,T_H,T = simulation_infected(_lambda,_p,_alpha,N,t_n,x_n,K,H,maxTime)

@@ -107,9 +107,6 @@ stepsize = [0.00001, 2e-10]
 
 final_alpha = []
 final_lambda = []
-iteration = 0
-x_n = x_0
-t_n = 0
 
 # placeholder value for stationary probability
 mu = 1
@@ -124,6 +121,9 @@ for i in range(0, 5):
     trajectory_alpha = []
     trajectory_X_n = []
     trajectory_T_n = []
+    iteration = 0
+    x_n = x_0
+    t_n = 0
     
     while iteration < 6000 or abs(mu - Beta)/Beta > 0.1:
         # simulate K days of X_n obtain T_H/T, starting from t_0 = 0 and x_0 = x_n

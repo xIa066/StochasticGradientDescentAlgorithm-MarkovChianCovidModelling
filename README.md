@@ -1,5 +1,7 @@
 # StochasticGradientDescentAlgorithm - MarkovChianCovidModelling
 
+COMP90005 Advanced Computing Study
+
 # Motivation
 This project considers the setting of a pandemic outbreak. During this outbreak, it is assumed there are a set of parameters, θ, that can be controlled by public policy. The vision of this project is to give the policymakers at any time, sets of optimal parameters θ<sup>*</sup>, so that the public health risks can be reduced as small as possible.
 
